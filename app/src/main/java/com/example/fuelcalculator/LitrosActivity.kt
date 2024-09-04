@@ -19,11 +19,11 @@ class LitrosActivity : AppCompatActivity() {
         val nextLtButton = findViewById<Button>(R.id.Bt_litros)
 
         nextLtButton.setOnClickListener {
-            val liters = inputLiters.text.toString().toFloat()
-            val kilometers = intent.getFloatExtra("EXTRA_KILOMETERS", 0f)
 
             // Criando um Intent para passar os dados para a próxima tela
             val intent = Intent(this, PriceActivity::class.java).apply {
+                val liters = inputLiters.text.toString().toFloat()
+                val kilometers = intent.getFloatExtra("EXTRA_KILOMETERS", 0f)
                 putExtra("EXTRA_KILOMETERS", kilometers)
                 putExtra("EXTRA_LITERS", liters)}
                 startActivity(intent)

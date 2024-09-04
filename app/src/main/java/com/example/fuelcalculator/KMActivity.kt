@@ -21,12 +21,13 @@ class KMActivity : AppCompatActivity() {
 
         nextKMButton.setOnClickListener {
             val kilometers = inputKM.text.toString().toFloat()
-            val intent = Intent(this, LitrosActivity::class.java)
             intent.putExtra("EXTRA_KILOMETERS", kilometers)
-            startActivity(intent)
+            val intent = Intent(this, LitrosActivity::class.java)
+
+            startActivity(intent)}
         }
     }
-}
+
 
 
 
