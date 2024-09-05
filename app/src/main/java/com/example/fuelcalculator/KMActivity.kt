@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -21,12 +22,25 @@ class KMActivity : AppCompatActivity() {
 
         nextKMButton.setOnClickListener {
             val intent = Intent(this, LitrosActivity::class.java)
-            val kilometers = inputKM.text.toString().toFloat()
-            intent.putExtra("EXTRA_KILOMETERS", kilometers)
+            val kilometersv: String= inputKM.text.toString()
 
-            startActivity(intent)}
+            if(kilometersv=="") {
+                Snackbar.make(
+                    inputKM,
+                    "Informe a quilometragem", Snackbar.LENGTH_LONG)
+                    .show()
+
+            } else{
+                    val kilometers= inputKM.text.toString().toFloat()
+
+                intent.putExtra("EXTRA_KILOMETERS", kilometers)
+                startActivity(intent)
+             }
         }
+
     }
+}
+
 
 
 
