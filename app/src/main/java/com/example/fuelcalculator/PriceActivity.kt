@@ -8,23 +8,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.fuelcalculator.databinding.ActivityPriceBinding
 
 class PriceActivity : AppCompatActivity() {
+    private val binding by lazy{
+        ActivityPriceBinding.inflate(layoutInflater)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_price)
-        val inputPrice: EditText = findViewById(R.id.campoPrice)
-        val nextPEButton: Button = findViewById(R.id.Bt_Price)
+        setContentView(binding.root)
 
+        binding.BtPrice.setOnClickListener {
 
-        nextPEButton.setOnClickListener {
-
-            // Criando um Intent para passar os dados para a próxima tela
-            val intent = Intent(this, ResultActivity::class.java).apply {
+            val intent = Intent( this, ResultActivity::class.java).apply {
                 val kilometers = intent.getFloatExtra("EXTRA_KILOMETERS", 0f)
                 val liters = intent.getFloatExtra("EXTRA_LITERS", 0f)
-                val pricePerLiter = inputPrice.text.toString().toFloat()
+                val pricePerLiter = binding.campoPrice.text.toString().toFloat()
+
                 val consumption = kilometers / liters
                 val totalCost = liters * pricePerLiter
 
@@ -33,5 +34,6 @@ class PriceActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
     }
 }
