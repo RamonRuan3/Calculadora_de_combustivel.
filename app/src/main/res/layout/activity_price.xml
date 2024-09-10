@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/Bt_Price"
         app:layout_constraintEnd_toEndOf="parent"
+        app:hintEnabled="false"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextPrice">
@@ -58,5 +59,18 @@
             app:layout_constraintVertical_bias="0.059" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="310dp"
+        android:layout_height="242dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Bt_Price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486"
+        app:srcCompat="@drawable/logogas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
