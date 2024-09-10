@@ -21,34 +21,25 @@ class PriceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.BtPrice.setOnClickListener {
-            val kilometers = intent.getFloatExtra("EXTRA_KILOMETERS", 0f)
-            val liters = intent.getFloatExtra("EXTRA_LITERS", 0f)
+            val kilometers = intent.getFloatExtra("EXTRA_KILOMETERS", 0f) // Recebe os quilômetros
+            val liters = intent.getFloatExtra("EXTRA_LITERS", 0f)         // Recebe os litros
             val pricePerLiterText = binding.campoPrice.text.toString()
 
-            // Verifica se o campo de preço por litro está vazio
             if (pricePerLiterText.isEmpty()) {
                 Toast.makeText(this@PriceActivity, "Por favor, informe o preço por litro", Toast.LENGTH_SHORT).show()
             } else {
-                // Continua com os cálculos se o campo não estiver vazio
                 val pricePerLiter = pricePerLiterText.toFloat()
+                val consumption = kilometers / liters // Calcula o consumo médio
+                val totalCost = liters * pricePerLiter // Calcula o custo total
 
-                val consumption = kilometers / liters
-                val totalCost = liters * pricePerLiter
-
-                // Cria o Intent fora do apply
                 val intent = Intent(this, ResultActivity::class.java)
-
-                // Coloca os extras dentro do apply
-                intent.apply {
-                    putExtra("EXTRA_CONSUMPTION", consumption)
-                    putExtra("EXTRA_COST", totalCost)
-                }
-
-                // startActivity agora está fora do bloco apply
+                intent.putExtra("EXTRA_CONSUMPTION", consumption) // Passa o consumo médio
+                intent.putExtra("EXTRA_COST", totalCost)          // Passa o custo total
+                intent.putExtra("EXTRA_DISTANCE", kilometers)     // Passa a distância percorrida
+                intent.putExtra("EXTRA_FUEL_PRICE", pricePerLiter)// Passa o preço do combustível
                 startActivity(intent)
             }
         }
-
 
     }
 }

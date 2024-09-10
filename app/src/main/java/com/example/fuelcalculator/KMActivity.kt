@@ -22,20 +22,18 @@ class KMActivity : AppCompatActivity() {
         val nextKMButton = findViewById<Button>(R.id.Bt_KM)
 
         nextKMButton.setOnClickListener {
-            val intent = Intent(this, LitrosActivity::class.java)
-            val kilometersv: String = inputKM.text.toString()
+            val inputKilometers = inputKM.text.toString()
 
-            // Verifica se o campo está vazio
-            if (kilometersv.isEmpty()) {
+            if (inputKilometers.isEmpty()) {
                 Toast.makeText(this, "Informe a quilometragem", Toast.LENGTH_SHORT).show()
             } else {
-                // Converte o valor para Float e continua
-                val kilometers = kilometersv.toFloat()
-
-                intent.putExtra("EXTRA_KILOMETERS", kilometers)
+                val kilometers = inputKilometers.toFloat()
+                val intent = Intent(this, LitrosActivity::class.java)
+                intent.putExtra("EXTRA_KILOMETERS", kilometers) // Passa os quilômetros para a próxima tela
                 startActivity(intent)
             }
         }
+
     }
 }
 
